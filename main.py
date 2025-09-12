@@ -15,12 +15,31 @@ class Pong:
 
         pygame.display.set_caption('Pong')
 
+    @staticmethod
+    def quit_game():
+        pygame.quit()
+        sys.exit()
+
+
+    def _check_events(self):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                Pong.quit_game()
+
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_q:
+                    Pong.quit_game()
+
+    
+
     def run_game(self):
 
         while True:
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    sys.exit()
+            self._check_events()
+
+
+            pygame.display.flip()
+
 
 
 if __name__ == '__main__':
