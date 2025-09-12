@@ -3,6 +3,7 @@ import pygame
 
 
 from settings import Settings
+from borders import Borders
 
 class Pong:
 
@@ -10,10 +11,13 @@ class Pong:
         pygame.init()
         self.settings = Settings()
 
-        self.screen = pygame.display.set_mode((self.settings.sreen_width,
-                                              self.settings.sreen_height))
+        self.screen = pygame.display.set_mode((self.settings.screen_width,
+                                              self.settings.screen_height))
 
         pygame.display.set_caption('Pong')
+
+        self.bords = Borders(self)
+
 
     @staticmethod
     def quit_game():
@@ -30,13 +34,14 @@ class Pong:
                 if event.key == pygame.K_q:
                     Pong.quit_game()
 
-    
+
 
     def run_game(self):
 
         while True:
             self._check_events()
 
+            self.bords.draw()
 
             pygame.display.flip()
 
