@@ -42,15 +42,29 @@ class Ball(Sprite):
             self.settings.ball_speed_y *= self.settings.ball_dy
 
 
-        if self.y <= self.settings.border_height:
+        elif self.y <= self.settings.border_height:
             self.settings.ball_dy *= -1
             self.settings.ball_speed_y *= self.settings.ball_dy
 
 
+    def _check_paddle(self):
 
+        if (self.x >= (self.settings.screen_width - self.settings.paddle_width - self.settings.ball_size)
+                and self.x >= self.settings.paddle_width):
+            self.settings.ball_dx *= -1
+            self.settings.ball_speed_x *= self.settings.ball_dx
+            self.settings.ball_dy *= -1
+            self.settings.ball_speed_y *= self.settings.ball_dy
+
+        elif self.x <= self.settings.paddle_width:
+            self.settings.ball_dx *= -1
+            self.settings.ball_speed_x *= self.settings.ball_dx
+            self.settings.ball_dy *= -1
+            self.settings.ball_speed_y *= self.settings.ball_dy
 
     def update(self):
         self._check_bounds()
+        self._check_paddle()
         self.y += self.settings.ball_speed_y
         self.x += self.settings.ball_speed_x
 
