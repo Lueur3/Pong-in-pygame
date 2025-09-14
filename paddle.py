@@ -25,12 +25,29 @@ class Paddle(Sprite):
         self.move_up_r = False
         self.move_down_r = False
 
+    def _check_bounds(self):
+        if self.y < self.settings.bounds_paddle_top:
+            self.y = self.settings.bounds_paddle_top
+        elif self.y > self.settings.bounds_paddle_bottm:
+            self.y = self.settings.bounds_paddle_bottm
+
+    def _move_left(self):
+        if self.move_up_l:
+            self.y -= self.settings.speed_paddle
+        if self.move_down_l:
+            self.y += self.settings.speed_paddle
+
+    def _move_right(self):
+        if self.move_up_r:
+            self.y -= self.settings.speed_paddle
+        if self.move_down_r:
+            self.y += self.settings.speed_paddle
 
     def update(self):
-        if self.move_up_r:
-            self.y -= 1
-        if self.move_down_r:
-            self.y += 1
+        self._move_left()
+        self._move_right()
 
-        self.rect.y = self.y
+        self._check_bounds()
+
+        self.rect.y = int(self.y)
 
