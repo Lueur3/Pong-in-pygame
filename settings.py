@@ -31,4 +31,10 @@ class Settings:
         self.ball_size = 35
         self.ball_color = 'red'
 
+        self.ball_speed_x = 0.5
+        self.ball_speed_y = 0.5
+
+        self.ball_dx = -1
+        self.ball_dy = -1
+
         self.game_active = False
