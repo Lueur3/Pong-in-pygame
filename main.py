@@ -5,6 +5,7 @@ import pygame
 from settings import Settings
 from borders import Borders
 from paddle import  Paddle
+from ball import Ball
 
 class Pong:
 
@@ -25,6 +26,10 @@ class Pong:
 
         self.paddleGroup = pygame.sprite.Group()
         self.paddleGroup.add(self.r_paddle, self.l_paddle)
+
+        self.ball = Ball(self)
+        self.ballGroup = pygame.sprite.Group()
+        self.ballGroup.add(self.ball)
 
     @staticmethod
     def quit_game():
@@ -72,9 +77,10 @@ class Pong:
 
     def _update_screen(self):
         self.screen.fill(self.settings.bg_color)
-        self.bords.draw()
+        self.bords.draw_borders()
 
         self.paddleGroup.draw(self.screen)
+        self.ballGroup.draw(self.screen)
 
 
         pygame.display.flip()
@@ -86,6 +92,8 @@ class Pong:
         while True:
             self._check_events()
             self.paddleGroup.update()
+
+
 
 
             self._update_screen()

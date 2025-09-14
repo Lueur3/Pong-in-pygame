@@ -28,4 +28,7 @@ class Settings:
 
         self.speed_paddle = 0.7
 
+        self.ball_size = 35
+        self.ball_color = 'red'
+
         self.game_active = False
