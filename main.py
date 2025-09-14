@@ -4,6 +4,7 @@ import pygame
 
 from settings import Settings
 from borders import Borders
+from paddle import  Paddle
 
 class Pong:
 
@@ -17,6 +18,8 @@ class Pong:
         pygame.display.set_caption('Pong')
 
         self.bords = Borders(self)
+
+        self.paddles = Paddle(self)
 
 
     @staticmethod
@@ -42,6 +45,7 @@ class Pong:
             self._check_events()
 
             self.bords.draw()
+            self.paddles.draw_paddle()
 
             pygame.display.flip()
 
