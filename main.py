@@ -15,12 +15,16 @@ class Pong:
         self.screen = pygame.display.set_mode((self.settings.screen_width,
                                               self.settings.screen_height))
 
+        self.screen.fill(self.settings.bg_color)
         pygame.display.set_caption('Pong')
 
         self.bords = Borders(self)
 
-        self.paddles = Paddle(self)
+        self.r_paddle = Paddle(self, *self.settings.l_pos)
+        self.l_paddle = Paddle(self, *self.settings.r_pos)
 
+        self.paddleGroup = pygame.sprite.Group()
+        self.paddleGroup.add(self.r_paddle, self.l_paddle)
 
     @staticmethod
     def quit_game():
@@ -37,17 +41,48 @@ class Pong:
                 if event.key == pygame.K_q:
                     Pong.quit_game()
 
+                self._keyDown_events(event)
+            elif event.type == pygame.KEYUP:
+                self._keyUp_events(event)
+
+    def _keyDown_events(self, event):
+        if event.key == pygame.K_UP:
+            self.r_paddle.move_up_r = True
+        if event.key == pygame.K_DOWN:
+            self.r_paddle.move_down_r = True
+
+    def _keyUp_events(self, event):
+        if event.key == pygame.K_UP:
+            self.r_paddle.move_up_r = False
+        if event.key == pygame.K_DOWN:
+            self.r_paddle.move_down_r = False
+
+
+
+    def _update_screen(self):
+        self.screen.fill(self.settings.bg_color)
+        self.bords.draw()
+
+        self.paddleGroup.draw(self.screen)
+
+
+        pygame.display.flip()
+
 
 
     def run_game(self):
 
         while True:
             self._check_events()
+            self.paddleGroup.update()
 
-            self.bords.draw()
-            self.paddles.draw_paddle()
 
-            pygame.display.flip()
+            self._update_screen()
+
+
+
+
+
 
 
 

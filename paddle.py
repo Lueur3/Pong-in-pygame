@@ -1,20 +1,36 @@
 import pygame
+from pygame.sprite import Sprite
 
-class Paddle:
+class Paddle(Sprite):
 
-    def __init__(self, pn_game):
+    def __init__(self, pn_game, left, top):
+        super().__init__()
         self.screen = pn_game.screen
         self.settings = pn_game.settings
 
-        right_paddle_l = self.settings.screen_width - self.settings.paddle_width
-        paddle_top = self.settings.screen_height // 2 - self.settings.paddle_height // 2
-        self.right_paddle = pygame.Rect(right_paddle_l, paddle_top, self.settings.paddle_width,
-                                       self.settings.paddle_height)
+        self.image = pygame.Surface([self.settings.paddle_width,
+                                     self.settings.paddle_height])
+        self.image.fill(self.settings.paddle_color)
+        self.rect = self.image.get_rect()
 
-        self.left_paddle = pygame.Rect(0, paddle_top, self.settings.paddle_width,
-                                       self.settings.paddle_height)
+        self.rect.x = left
+        self.rect.y = top
 
-    def draw_paddle(self):
+        self.x = left
+        self.y = top
 
-        pygame.draw.rect(self.screen, self.settings.paddle_color, self.right_paddle)
-        pygame.draw.rect(self.screen, self.settings.paddle_color, self.left_paddle)
+        self.move_up_l = False
+        self.move_down_l = False
+
+        self.move_up_r = False
+        self.move_down_r = False
+
+
+    def update(self):
+        if self.move_up_r:
+            self.y -= 1
+        if self.move_down_r:
+            self.y += 1
+
+        self.rect.y = self.y
+
