@@ -22,4 +22,10 @@ class Settings:
         self.r_pos = (0,
                       self.screen_height // 2 - self.paddle_height // 2)
 
+        self.bounds_paddle_top = self.border_height
+        self.bounds_paddle_bottm = (self.screen_height -
+                      self.paddle_height - self.border_height)
+
+        self.speed_paddle = 0.7
+
         self.game_active = False
