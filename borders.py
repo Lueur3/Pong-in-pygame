@@ -19,7 +19,7 @@ class Borders:
 
 
 
-    def draw(self):
+    def draw_borders(self):
         pygame.draw.rect(self.screen, self.settings.border_color, self.top_border)
         pygame.draw.rect(self.screen, self.settings.border_color, self.bottom_border)
         pygame.draw.rect(self.screen, self.settings.border_color, self.net)
