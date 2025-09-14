@@ -26,8 +26,8 @@ class Paddle(Sprite):
         self.move_down_r = False
 
     def _check_bounds(self):
-        if self.y < self.settings.bounds_paddle_top:
-            self.y = self.settings.bounds_paddle_top
+        if self.y < self.settings.border_height:
+            self.y = self.settings.border_height
         elif self.y > self.settings.bounds_paddle_bottm:
             self.y = self.settings.bounds_paddle_bottm
 
