@@ -6,6 +6,7 @@ from settings import Settings
 from borders import Borders
 from paddle import  Paddle
 from ball import Ball
+from game_stats import Game_Stats
 
 class Pong:
 
@@ -18,6 +19,8 @@ class Pong:
 
         self.screen.fill(self.settings.bg_color)
         pygame.display.set_caption('Pong')
+
+        self.stats = Game_Stats(self)
 
         self.bords = Borders(self)
 
@@ -35,6 +38,7 @@ class Pong:
     def quit_game():
         pygame.quit()
         sys.exit()
+
 
 
     def _check_events(self):
@@ -73,6 +77,15 @@ class Pong:
         elif event.key == pygame.K_s:
             self.l_paddle.move_down_l = False
 
+    def _check_goal(self):
+        if self.ball.rect.x >= self.settings.screen_width:
+            self.stats.p2_score += 1
+            self.ball.ball_pos()
+        elif self.ball.rect.x <= 0:
+            self.stats.p1_score += 1
+            self.ball.ball_pos()
+
+
 
 
     def _update_screen(self):
@@ -81,7 +94,11 @@ class Pong:
 
         self.paddleGroup.draw(self.screen)
         self.ballGroup.draw(self.screen)
+        self._check_goal()
 
+        print('SCORE')
+        print(f'p1 - {self.stats.p1_score}')
+        print(f'p2 - {self.stats.p2_score}')
 
         pygame.display.flip()
 
@@ -93,6 +110,7 @@ class Pong:
             self._check_events()
             self.paddleGroup.update()
             self.ballGroup.update()
+
 
 
 
