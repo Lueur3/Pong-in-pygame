@@ -92,6 +92,7 @@ class Pong:
         while True:
             self._check_events()
             self.paddleGroup.update()
+            self.ballGroup.update()
 
 
 
