@@ -34,9 +34,28 @@ class Ball(Sprite):
         self.rect.y = int(self.y)
         self.rect.x = int(self.x)
 
+    def _check_bounds(self):
+
+        if (self.y >= self.settings.screen_height - self.settings.border_height -
+                                                        self.settings.ball_size):
+            self.settings.ball_dy *= -1
+            self.settings.ball_speed_y *= self.settings.ball_dy
+
+
+        if self.y <= self.settings.border_height:
+            self.settings.ball_dy *= -1
+            self.settings.ball_speed_y *= self.settings.ball_dy
+
+
+
+
     def update(self):
-        self.y += self.settings.ball_speed_y * self.settings.ball_dy
-        self.x += self.settings.ball_speed_x * self.settings.ball_dx
+        self._check_bounds()
+        self.y += self.settings.ball_speed_y
+        self.x += self.settings.ball_speed_x
+
+
+
 
         self.rect.y = int(self.y)
         self.rect.x = int(self.x)
