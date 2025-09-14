@@ -22,7 +22,6 @@ class Settings:
         self.r_pos = (0,
                       self.screen_height // 2 - self.paddle_height // 2)
 
-        self.bounds_paddle_top = self.border_height
         self.bounds_paddle_bottm = (self.screen_height -
                       self.paddle_height - self.border_height)
 
@@ -31,10 +30,10 @@ class Settings:
         self.ball_size = 35
         self.ball_color = 'red'
 
-        self.ball_speed_x = 0.5
-        self.ball_speed_y = 0.5
+        self.ball_speed_x = 0.3
+        self.ball_speed_y = 0.3
 
-        self.ball_dx = -1
-        self.ball_dy = -1
+        self.ball_dx = 1
+        self.ball_dy = 1
 
         self.game_active = False
