@@ -42,20 +42,31 @@ class Pong:
                     Pong.quit_game()
 
                 self._keyDown_events(event)
+
             elif event.type == pygame.KEYUP:
                 self._keyUp_events(event)
 
     def _keyDown_events(self, event):
         if event.key == pygame.K_UP:
             self.r_paddle.move_up_r = True
-        if event.key == pygame.K_DOWN:
+        elif event.key == pygame.K_DOWN:
             self.r_paddle.move_down_r = True
+
+        if event.key == pygame.K_w:
+            self.l_paddle.move_up_l = True
+        elif event.key == pygame.K_s:
+            self.l_paddle.move_down_l = True
 
     def _keyUp_events(self, event):
         if event.key == pygame.K_UP:
             self.r_paddle.move_up_r = False
-        if event.key == pygame.K_DOWN:
+        elif event.key == pygame.K_DOWN:
             self.r_paddle.move_down_r = False
+
+        if event.key == pygame.K_w:
+            self.l_paddle.move_up_l = False
+        elif event.key == pygame.K_s:
+            self.l_paddle.move_down_l = False
 
 
 
