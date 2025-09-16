@@ -1,6 +1,6 @@
 # Pong-in-pygame
 
-#EN
+# EN
 # About the Game  
 
 This is a classic Pong — a game inspired by the original arcade machines.  
@@ -52,7 +52,7 @@ The main components of the game are divided into modules for better code organiz
 - scoreboard.py — manages score display and winner messages.
 
 
-#RU
+# RU
 # Об игре  
 
 Это классический Pong — игра, вдохновлённая оригинальными аркадными автоматами.  
