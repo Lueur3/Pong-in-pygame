@@ -1,3 +1,4 @@
+from random import choice
 
 class Settings:
 
@@ -37,3 +38,12 @@ class Settings:
         self.ball_dy = 1
 
         self.game_active = False
+
+    def ball_prop(self):
+        s = choice((-1, 1))
+
+        self.ball_speed_x = 0.3 * s
+        self.ball_speed_y = 0.3 * s
+
+        self.ball_dx = 1 * s
+        self.ball_dy = 1 * s
