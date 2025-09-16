@@ -1,5 +1,6 @@
 import pygame
 
+
 class Scoreboard:
 
     def __init__(self, pn_game):
@@ -10,15 +11,11 @@ class Scoreboard:
         self.stats = pn_game.stats
 
         self.text_color = (255, 255, 255)
-        self.winner_color = (128, 255, 0 )
+        self.winner_color = (128, 255, 0)
         self.font = pygame.font.SysFont(None, 48)
 
         self.prep_p1_score()
         self.prep_p2_score()
-
-
-
-
 
     def prep_p1_score(self):
         p1_score_str = str(self.stats.p1_score)
@@ -28,7 +25,6 @@ class Scoreboard:
         self.p1_score_rect = self.p1_image.get_rect()
         self.p1_score_rect.left = self.screen_rect.left + 500
         self.p1_score_rect.top = 60
-
 
     def prep_p2_score(self):
         p2_score_str = str(self.stats.p2_score)
@@ -51,7 +47,6 @@ class Scoreboard:
 
     def show_winner(self):
         self.screen.blit(self.winner_image, self.winner_rect)
-
 
     def show_score(self):
         self.screen.blit(self.p1_image, self.p1_score_rect)
