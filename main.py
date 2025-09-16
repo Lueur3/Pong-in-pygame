@@ -77,13 +77,19 @@ class Pong:
         elif event.key == pygame.K_s:
             self.l_paddle.move_down_l = False
 
+    def _reset_paddle(self):
+        self.l_paddle.x, self.l_paddle.y = self.settings.l_pos
+        self.r_paddle.x, self.r_paddle.y =  self.settings.r_pos
+
     def _check_goal(self):
         if self.ball.rect.x >= self.settings.screen_width:
             self.stats.p2_score += 1
             self.ball.ball_pos()
+            self._reset_paddle()
         elif self.ball.rect.x <= 0:
             self.stats.p1_score += 1
             self.ball.ball_pos()
+            self._reset_paddle()
 
 
 
