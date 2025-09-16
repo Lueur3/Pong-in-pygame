@@ -1,4 +1,58 @@
 # Pong-in-pygame
+
+#EN
+# About the Game  
+
+This is a classic Pong — a game inspired by the original arcade machines.  
+The goal of the game is to hit the ball with the paddle and prevent it from passing by.  
+Each time the ball crosses the opponent’s field, you earn a point.  
+The game continues until one of the players scores 11 points, after which the winner is announced.  
+
+The game is implemented using the Pygame library and follows the principles of object-oriented programming (OOP),  
+which makes the code clean, scalable, and easy to read.  
+
+---
+
+## Game Features  
+
+- Two players: Control two paddles with the keyboard to hit the ball.  
+- Scoreboard: The score is displayed on the screen to track the progress of the match.  
+- Boundaries: The playfield is limited by the top and bottom borders. The ball bounces off them, adding dynamics to the game.  
+- Victory screen: When a player reaches 11 points, the game stops, and a message announcing the winner appears.  
+
+---
+
+## Controls  
+
+Player 1 (left paddle):  
+- W — up  
+- S — down  
+
+Player 2 (right paddle):  
+- ↑ (arrow up) — up  
+- ↓ (arrow down) — down  
+
+Additional:  
+- P — start or resume the game  
+- Q — quit the game  
+
+---
+
+## Technical Details  
+
+The project is written in Python using the Pygame library.  
+The main components of the game are divided into modules for better code organization:  
+
+- main.py — the main file that runs the game and contains the main game loop.  
+- borders.py — responsible for creating and drawing the game field borders.  
+- paddle.py — contains the Paddle class for paddles, implements their movement and boundary checks.  
+- ball.py — contains the Ball class for the ball, responsible for its movement and collisions.  
+- settings.py — a class for storing all game settings, including sizes, colors, and speeds.  
+- game_stats.py — responsible for game statistics, such as player scores.  
+- scoreboard.py — manages score display and winner messages.
+
+
+#RU
 # Об игре  
 
 Это классический Pong — игра, вдохновлённая оригинальными аркадными автоматами.  
